@@ -22,45 +22,26 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: 
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              RecentFilesList(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const RecordButton(key: ValueKey('RecordButtonFromHome')),
-                  const UploadButton(key: ValueKey('Upload')),
-                ],
+              Expanded(
+                child: 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const RecordButton(key: ValueKey('RecordButtonFromHome')),
+                    const UploadButton(key: ValueKey('Upload')),
+                  ],
+                ),
               ),
+              RecentFilesList(),
             ],
           ),
-        )
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _bottomNavigationIndex,
-        onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'ホーム',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: '履歴',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'アカウント',
-          ),
-        ],
-        type: BottomNavigationBarType.fixed,
-      ),
+          
     );
   }
 
