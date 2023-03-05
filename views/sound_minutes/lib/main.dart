@@ -49,6 +49,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _currentIndex = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -105,11 +106,27 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'お気に入り'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.history), label: '履歴'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'アカウント'),
+        ],
+        type: BottomNavigationBarType.fixed,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+  void _onItemTapped(int index) => setState(() => _currentIndex = index );
 }
